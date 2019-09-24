@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Slacker - Even Reminder</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="../images/slackbot.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i"
+          rel="stylesheet">
+
+    <!-- Bootstrap css -->
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../lib/modal-video/css/modal-video.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+      Theme Name: eStartup
+      Theme URL: https://bootstrapmade.com/estartup-bootstrap-landing-page-template/
+      Author: BootstrapMade.com
+      License: https://bootstrapmade.com/license/
+    ======================================================= -->
+
+
+</head>
+
+<body>
+
+<!--send the Reminder-->
+<script>
+    const query = window.location.search.substring(1);
+    const token = query.split('access_token=')[1];
+
+    if(token) {
+        console.log('token = /' + token + '/');
+        let message = '```>>>*'+localStorage.getItem("message")+'*\n\n_This Reminder is from Slacjer- The Event Reminder App_';
+        let url = 'https://slack.com/api/reminders.add?token='+String(token)+'&text=tttttttttt&time='+localStorage.getItem("time")+'&pretty=1';
+
+        fetch(url, {
+            method: 'POST',
+        }).then((res)=> {
+            console.log('success', res.data);
+        }).catch((error)=> {
+            console.log(error);
+        })
+
+    }
+    else {
+        console.log('token = no token');
+    }
+</script>
+
+<header id="header" class="header header-hide">
+    <div class="container">
+
+        <div id="logo" class="pull-left row">
+            <img style="height: 45px" src="../images/slackbot.png" alt="" title=""/></a>
+            <h1 style="margin-top: 7px;margin-left: 10px">
+                <a href="../index.html" class="scrollto"><span>Slacker</span></a></h1>
+        </div>
+
+        <nav id="nav-menu-container">
+
+            <ul class="nav-menu">
+                <li>
+                    <a style="font-family: Consolas; font-size: x-large; -webkit-text-fill-color: #c82333; margin-top: 3px; font-style: italic">Slack Event Reminder</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section/>
+
+<section id="team" class="padd-section text-center wow fadeInUp">
+    <div class="container">
+        <div class="section-title text-center">
+
+            <h3 style="font-weight: lighter; font-family:Gubbi Roboto, sans-serif">Special Event</h3>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <img style="width: inherit" src="../images/event.png">
+            </div>
+            <div  class="container col-md-6">
+
+
+                    <div class="container">
+                        <div class="section-title text-center">
+                            <img src="../images/slack.png"/>
+                            <h2>Reminder</h2>
+                            <p class="separator">Add Reminder for the Event To Your Slack App.</p>
+
+                        </div>
+
+                        <div class="row justify-content-center">
+
+                            <div class="col8">
+                                <div class="form">
+
+                                    <form action="" method="post" role="form" class="contactForm">
+                                        <div class="form-group">
+                                            <input type="text" name="name" class="form-control" id="message" placeholder="Message" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                            <div class="validation"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="time" id="time" placeholder="time" data-rule="email" data-msg="Please enter tiime" />
+                                            <div class="validation"></div>
+                                        </div>
+                                        <div class="text-center" onclick="submit()">
+                                            <a href="https://slack.com/oauth/authorize?scope=reminders:write&client_id=704329635776.711669023159">
+                                            <img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png"
+                                                 srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"
+                                                 />
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="container">
+
+
+                    </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="team" class="padd-section text-center wow fadeInUp">
+
+  <div class="container">
+
+  </div>
+</section>
+
+<!--==========================
+  Footer
+============================-->
+<footer class="footer">
+    <div class="copyrights">
+        <div class="container">
+            <p>&copy; Copyrights Slacker - slack profile changer. All rights reserved.</p>
+            <div class="credits">
+                Designed by <a href="">Team <img style="height: 20px" src="../images/slackbot.png"></a>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="back-to-top"><i class="fas fa-bars"></i></a>
+</footer>
+
+
+<script>
+    function submit() {
+
+        let message = document.getElementById("message").value;
+        let time = document.getElementById("time").value;
+
+        localStorage.setItem("message", message);
+        localStorage.setItem("time", time);
+        console.log(message, time);
+    }
+
+</script>
+
+
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery-migrate.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="lib/superfish/hoverIntent.js"></script>
+<script src="lib/superfish/superfish.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/modal-video/js/modal-video.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<!-- Contact Form JavaScript File -->
+<script src="contactform/contactform.js"></script>
+
+<!-- Template Main Javascript File -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
